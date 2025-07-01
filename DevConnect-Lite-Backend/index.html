@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevConnect Lite - API Documentation</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .status-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #4CAF50;
+            border-radius: 50%;
+            margin-right: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .api-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .endpoint {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.2s ease;
+        }
+
+        .endpoint:hover {
+            transform: translateX(5px);
+        }
+
+        .method {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            margin-right: 15px;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .get { background: #61affe; color: white; }
+        .post { background: #49cc90; color: white; }
+        .put { background: #fca130; color: white; }
+        .delete { background: #f93e3e; color: white; }
+
+        .endpoint-path {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .endpoint-desc {
+            margin-top: 10px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: #666;
+        }
+
+        .test-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .test-form {
+            display: grid;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input, .form-group select {
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .test-btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .test-btn:hover {
+            background: #5a6fd8;
+        }
+
+        .response-area {
+            background: #f8f9fa;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>DevConnect Lite</h1>
+            <p>Backend API Documentation & Testing Interface</p>
+        </div>
+
+        <div class="status-card">
+            <h2><span class="status-indicator"></span>API Status</h2>
+            <p>Server is running and ready to handle requests</p>
+            <p><strong>Base URL:</strong> <code>http://localhost:5000</code></p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🔐</div>
+                <div class="feature-title">Authentication</div>
+                <div class="feature-desc">JWT-based authentication with role-based access control</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📋</div>
+                <div class="feature-title">Project Management</div>
+                <div class="feature-desc">Create, manage, and export projects with full CRUD operations</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <div class="feature-title">Bidding System</div>
+                <div class="feature-desc">Place, manage, and track bids on projects</div>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <div class="feature-title">MongoDB Atlas</div>
+                <div class="feature-desc">Cloud database integration with optimized queries</div>
+            </div>
+        </div>
+
+        <div class="api-section">
+            <h2 class="section-title">Authentication Endpoints</h2>
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="endpoint-path">/auth/signup/user</span>
+                <div class="endpoint-desc">Register as a regular user</div>
+            </div>
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="endpoint-path">/auth/signup/developer</span>
+                <div class="endpoint-desc">Register as a developer</div>
+            </div>
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="endpoint-path">/auth/login</span>
+                <div class="endpoint-desc">Login and get JWT token</div>
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-path">/auth/profile</span>
+                <div class="endpoint-desc">Get current user profile (requires JWT)</div>
+            </div>
+        </div>
+
+        <div class="api-section">
+            <h2 class="section-title">Project Endpoints</h2>
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="endpoint-path">/projects/create</span>
+                <div class="endpoint-desc">Create a new project (User only)</div>
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-path">/projects/open</span>
+                <div class="endpoint-desc">List open projects (Developer only)</div>
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-path">/projects/:id</span>
+                <div class="endpoint-desc">Get project by ID</div>
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-path">/projects/my-projects</span>
+                <div class="endpoint-desc">List your projects</div>
+            </div>
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="endpoint-path">/projects/:id</span>
+                <div class="endpoint-desc">Update a project</div>
+            </div>
+            <div class="endpoint">
+                <span class="method delete">DELETE</span>
+                <span class="endpoint-path">/projects/:id</span>
+                <div class="endpoint-desc">Delete a project</div>
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-path">/projects/:id/bids</span>
+                <div class="endpoint-desc">List all bids for a project (Project owner only)</div>
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-path">/projects/export-json</span>
+                <div class="endpoint-desc">Export projects to JSON file (User only)</div>
+            </div>
+        </div>
+
+        <div class="api-section">
+            <h2 class="section-title">Bid Endpoints</h2>
+            <div class="endpoint">
+                <span class="method post">POST</span>
+                <span class="endpoint-path">/bids/place</span>
+                <div class="endpoint-desc">Place a bid on a project (Developer only)</div>
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-path">/bids/project/:projectId</span>
+                <div class="endpoint-desc">List bids for a project (Project owner only)</div>
+            </div>
+            <div class="endpoint">
+                <span class="method get">GET</span>
+                <span class="endpoint-path">/bids/my-bids</span>
+                <div class="endpoint-desc">List your bids (Developer only)</div>
+            </div>
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="endpoint-path">/bids/:bidId/accept</span>
+                <div class="endpoint-desc">Accept a bid (Project owner only)</div>
+            </div>
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="endpoint-path">/bids/:bidId/reject</span>
+                <div class="endpoint-desc">Reject a bid (Project owner only)</div>
+            </div>
+            <div class="endpoint">
+                <span class="method put">PUT</span>
+                <span class="endpoint-path">/bids/:bidId/withdraw</span>
+                <div class="endpoint-desc">Withdraw a bid (Developer only)</div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h2 class="section-title">API Testing</h2>
+            <form class="test-form" id="testForm">
+                <div class="form-group">
+                    <label for="endpoint">Endpoint:</label>
+                    <select id="endpoint" required>
+                        <option value="">Select an endpoint</option>
+                        <option value="GET /health">GET /health</option>
+                        <option value="GET /">GET /</option>
+                        <option value="POST /auth/signup/user">POST /auth/signup/user</option>
+                        <option value="POST /auth/signup/developer">POST /auth/signup/developer</option>
+                        <option value="POST /auth/login">POST /auth/login</option>
+                        <option value="GET /auth/profile">GET /auth/profile</option>
+                        <option value="GET /projects/open">GET /projects/open</option>
+                        <option value="GET /projects/export-json">GET /projects/export-json</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="token">JWT Token (for protected routes):</label>
+                    <input type="text" id="token" placeholder="Bearer your-jwt-token-here">
+                </div>
+                <button type="submit" class="test-btn">Test Endpoint</button>
+            </form>
+            <div id="response" class="response-area" style="display: none;"></div>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 DevConnect Lite. Built with Node.js, Express, and MongoDB Atlas.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('testForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const endpoint = document.getElementById('endpoint').value;
+            const token = document.getElementById('token').value;
+            const responseDiv = document.getElementById('response');
+            
+            if (!endpoint) {
+                alert('Please select an endpoint');
+                return;
+            }
+            
+            const [method, path] = endpoint.split(' ');
+            const url = `http://localhost:5000${path}`;
+            
+            const headers = {
+                'Content-Type': 'application/json'
+            };
+            
+            if (token) {
+                headers['Authorization'] = token.startsWith('Bearer ') ? token : `Bearer ${token}`;
+            }
+            
+            try {
+                responseDiv.style.display = 'block';
+                responseDiv.textContent = 'Loading...';
+                
+                const response = await fetch(url, {
+                    method: method,
+                    headers: headers
+                });
+                
+                const data = await response.json();
+                
+                responseDiv.textContent = `Status: ${response.status} ${response.statusText}\n\n${JSON.stringify(data, null, 2)}`;
+                
+            } catch (error) {
+                responseDiv.textContent = `Error: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html> 

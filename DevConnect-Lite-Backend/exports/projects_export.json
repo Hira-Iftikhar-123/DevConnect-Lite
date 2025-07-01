@@ -1,0 +1,167 @@
+[
+  {
+    "budget": {
+      "min": 400,
+      "max": 1000,
+      "currency": "USD"
+    },
+    "_id": "6863e98cdeb75af9eb162228",
+    "title": "AI-Powered Resume Analyzer",
+    "description": "Updated description for resume tool",
+    "owner": {
+      "_id": "6863e3080bd68fb9fe92b15c",
+      "username": "Hira_Iftikhar",
+      "email": "hira@example.com",
+      "fullName": "Hira Iftikhar"
+    },
+    "category": "ai-ml",
+    "skills": [
+      "Python",
+      "NLP",
+      "TensorFlow"
+    ],
+    "timeline": "1-2 months",
+    "complexity": "complex",
+    "status": "open",
+    "requirements": [
+      "Integrate OpenAI API",
+      "Real-time scoring",
+      "Admin panel to review applicants"
+    ],
+    "deliverables": [
+      "Source code",
+      "Documentation",
+      "Deployed link"
+    ],
+    "selectedDeveloper": null,
+    "deadline": "2025-08-15T00:00:00.000Z",
+    "attachments": [],
+    "createdAt": "2025-07-01T13:58:36.651Z",
+    "updatedAt": "2025-07-01T18:14:39.214Z",
+    "__v": 0
+  },
+  {
+    "budget": {
+      "min": 300,
+      "max": 800,
+      "currency": "USD"
+    },
+    "_id": "6863ea9fc12b27456d6fd461",
+    "title": "AI-Powered Skill Matching Platform",
+    "description": "Build an AI tool that can analyze and match your skills and rank them based on job requirements.",
+    "owner": {
+      "_id": "6863e3080bd68fb9fe92b15c",
+      "username": "Hira_Iftikhar",
+      "email": "hira@example.com",
+      "fullName": "Hira Iftikhar"
+    },
+    "category": "ai-ml",
+    "skills": [
+      "Python",
+      "NLP",
+      "TensorFlow"
+    ],
+    "timeline": "1-2 months",
+    "complexity": "complex",
+    "status": "open",
+    "requirements": [
+      "Integrate OpenAI API",
+      "Real-time scoring",
+      "Admin panel to review applicants"
+    ],
+    "deliverables": [
+      "Source code",
+      "Documentation",
+      "Deployed link"
+    ],
+    "selectedDeveloper": null,
+    "deadline": "2025-08-15T00:00:00.000Z",
+    "attachments": [],
+    "createdAt": "2025-07-01T14:03:11.719Z",
+    "updatedAt": "2025-07-01T14:03:11.719Z",
+    "__v": 0
+  },
+  {
+    "budget": {
+      "min": 500,
+      "max": 1200,
+      "currency": "USD"
+    },
+    "_id": "686408e1cd029b31d8bc7fed",
+    "title": "Smart Meeting Summarizer",
+    "description": "Build a web application that transcribes and summarizes online meeting audio in real-time using speech-to-text and LLMs.",
+    "owner": {
+      "_id": "6863e3080bd68fb9fe92b15c",
+      "username": "Hira_Iftikhar",
+      "email": "hira@example.com",
+      "fullName": "Hira Iftikhar"
+    },
+    "category": "ai-ml",
+    "skills": [
+      "Python",
+      "Speech Recognition",
+      "React",
+      "OpenAI API",
+      "Flask"
+    ],
+    "timeline": "1-2 months",
+    "complexity": "moderate",
+    "status": "open",
+    "requirements": [
+      "Transcribe audio input using Whisper or similar model",
+      "Generate concise meeting summaries using OpenAI API",
+      "UI for uploading recordings or live transcription",
+      "Export summaries to PDF or email"
+    ],
+    "deliverables": [
+      "Frontend and backend source code",
+      "User guide and documentation",
+      "Working deployed application"
+    ],
+    "selectedDeveloper": null,
+    "deadline": "2025-09-01T00:00:00.000Z",
+    "attachments": [],
+    "createdAt": "2025-07-01T16:12:17.332Z",
+    "updatedAt": "2025-07-01T16:12:17.332Z",
+    "__v": 0
+  },
+  {
+    "budget": {
+      "min": 300,
+      "max": 800,
+      "currency": "USD"
+    },
+    "_id": "686418d7d05030cc0ed68a78",
+    "title": "AI Resume Analyzer",
+    "description": "Tool to screen resumes using OpenAI.",
+    "owner": {
+      "_id": "6863e3080bd68fb9fe92b15c",
+      "username": "Hira_Iftikhar",
+      "email": "hira@example.com",
+      "fullName": "Hira Iftikhar"
+    },
+    "category": "ai-ml",
+    "skills": [
+      "Python",
+      "OpenAI API"
+    ],
+    "timeline": "1-2 months",
+    "complexity": "complex",
+    "status": "open",
+    "requirements": [
+      "Integrate OpenAI",
+      "Dashboard for HR"
+    ],
+    "deliverables": [
+      "Source code",
+      "Docs",
+      "Deployment"
+    ],
+    "selectedDeveloper": null,
+    "deadline": "2025-08-15T00:00:00.000Z",
+    "attachments": [],
+    "createdAt": "2025-07-01T17:20:23.199Z",
+    "updatedAt": "2025-07-01T17:20:23.199Z",
+    "__v": 0
+  }
+]
